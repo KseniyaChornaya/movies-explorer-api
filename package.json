@@ -1,10 +1,13 @@
 {
   "name": "movies-explorer-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "# Дипломная работа бэкенд часть",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint .",
+    "lint-fix": "npx eslint --fix .",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,17 @@
   "bugs": {
     "url": "https://github.com/KseniyaChornaya/movies-explorer-api/issues"
   },
-  "homepage": "https://github.com/KseniyaChornaya/movies-explorer-api#readme"
+  "homepage": "https://github.com/KseniyaChornaya/movies-explorer-api#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "nodemon": "^2.0.20"
+  }
 }
