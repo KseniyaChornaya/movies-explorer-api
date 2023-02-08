@@ -1,7 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
 const { JWT_SECRET, NODE_ENV } = process.env;
-const User = require('../models/user');
+const User = require('../models/User');
 const NotFoundError = require('../errors/not-found-error');
 const ConflictError = require('../errors/conflict-error');
 const BadRequestError = require('../errors/bad-request-error');
@@ -47,26 +48,25 @@ module.exports.getUserMe = (req, res, next) => {
   User.findOne({ _id: req.user._id })
     .orFail(new NotFoundError('Пользователь не найден'))
     .then((user) => {
-      console.log('111');
       res.send(user);
     })
     .catch(next);
 };
 
 module.exports.updateUserInfo = (req, res, next) => {
-    User.findByIdAndUpdate(req.user._id, {
-      name: req.body.name,
-      email: req.body.email,
-    }, {
-      new: true,
-      runValidators: true,
-    })
-      .then((user) => res.send(user))
-      .catch((err) => {
-        if (err.name === 'ValidationError') {
-          next(new BadRequestError('Отправлены некорректные данные'));
-        } else {
-          next(err);
-        }
-      });
-  };
+  User.findByIdAndUpdate(req.user._id, {
+    name: req.body.name,
+    email: req.body.email,
+  }, {
+    new: true,
+    runValidators: true,
+  })
+    .then((user) => res.send(user))
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new BadRequestError('Отправлены некорректные данные'));
+      } else {
+        next(err);
+      }
+    });
+};

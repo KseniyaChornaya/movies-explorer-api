@@ -21,7 +21,7 @@ exports.addNewMovie = (req, res, next) => {
 };
 
 exports.getMovie = (req, res, next) => {
-  Movie.find({owner: req.user._id })
+  Movie.find({ owner: req.user._id })
     .then((movies) => {
       res.send(movies);
     })

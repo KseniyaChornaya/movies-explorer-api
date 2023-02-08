@@ -5,34 +5,34 @@ const movieSchema = new mongoose.Schema({
   country: {
     type: String,
     required: true,
-    },
+  },
   director: {
     type: String,
     required: true,
-    },
+  },
   duration: {
     type: Number,
     required: true,
-    },
+  },
   year: {
     type: String,
     required: true,
-    },
+  },
   description: {
     type: String,
     required: true,
-    },
+  },
   image: {
     type: String,
     required: true,
     validate: [validator.isURL, 'Неверный формат ссылки'],
-    },
-  trailerLink : {
+  },
+  trailerLink: {
     type: String,
     required: true,
     validate: [validator.isURL, 'Неверный формат ссылки'],
   },
-  thumbnail : {
+  thumbnail: {
     type: String,
     required: true,
     validate: [validator.isURL, 'Неверный формат ссылки'],
@@ -46,17 +46,17 @@ const movieSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-//   likes: [
-//     {
-//       type: mongoose.Schema.Types.ObjectId,
-//       default: [],
-//       ref: 'user',
-//     },
-//   ],
-//   createdAt: {
-//     type: Date,
-//     default: Date.now,
-//   },
+  //   likes: [
+  //     {
+  //       type: mongoose.Schema.Types.ObjectId,
+  //       default: [],
+  //       ref: 'user',
+  //     },
+  //   ],
+  //   createdAt: {
+  //     type: Date,
+  //     default: Date.now,
+  //   },
   nameRU: {
     type: String,
     required: true,
