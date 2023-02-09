@@ -6,7 +6,7 @@ const { errors } = require('celebrate');
 const errorHandler = require('./middlewares/error-handler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT, MONGO_URL='mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
+const { PORT= 3005, MONGO_URL= 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 const routes = require('./routes/index');
 
 const app = express();
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(requestLogger);
 app.use(routes);
 async function connect() {
-  await mongoose.connect(MONGO_URL, {});
+  await mongoose.connect(MONGO_URL);
   console.log(`Server connect db ${MONGO_URL}`);
   app.listen(PORT);
   console.log(`Server listen on ${PORT}`);
