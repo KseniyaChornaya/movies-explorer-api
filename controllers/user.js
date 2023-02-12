@@ -63,7 +63,9 @@ module.exports.updateUserInfo = (req, res, next) => {
   })
     .then((user) => res.send(user))
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err.code === 11000) {
+        next(new ConflictError('Необходимо ввести новые данные'));
+      } else if (err.name === 'ValidationError') {
         next(new BadRequestError('Отправлены некорректные данные'));
       } else {
         next(err);
